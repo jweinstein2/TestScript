@@ -3,7 +3,7 @@ ASSIGNMENT=3
 NAME="Subst16"
 LOCAL="./$NAME"
 STAN="/c/cs223/Hwk$ASSIGNMENT/$NAME"
-MYDIR="$(dirname "$(realpath "$0")")/tests$ASSIGNMENT"
+MYDIR="$(dirname "$(realpath "$0")")/tests"
 
 i=0
 failed=0
