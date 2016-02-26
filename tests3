@@ -1,0 +1,12 @@
+echo aabba | $PROG fu ba -q
+echo @..@ | $PROG @... .@ -r
+echo abc> | $PROG fu b -qrs
+echo aabba | $PROG ab ba -r
+echo aabba | $PROG fu ba -q
+echo aabba | $PROG ab ba -r
+echo aabba | $PROG fu ba -q
+echo aabba | $PROG ab ba -r
+echo aabba | $PROG fu ba -q
+echo aabba | $PROG ab ba -r
+echo aabba | $PROG fu ba -q
+echo aabba | $PROG ab ba -r

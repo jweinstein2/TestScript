@@ -1,0 +1,36 @@
+#!/bin/bash
+ASSIGNMENT=3
+NAME="Subst16"
+LOCAL="./$NAME"
+STAN="/c/cs223/Hwk$ASSIGNMENT/$NAME"
+MYDIR="$(dirname "$(realpath "$0")")/tests$ASSIGNMENT"
+
+i=0
+failed=0
+passed=0
+
+while read line           
+do   
+	((i=i+1))
+	PROG=$LOCAL   
+    myAns=$(eval "$line")
+    PROG=$STAN  
+    stanAns=$(eval "$line")
+
+    if [ "$myAns" = "$stanAns" ]
+	then
+		((passed=passed+1))
+		echo "Test$i passed"
+	else
+		((failed=failed+1))
+		echo "===== Test$i failed ======="
+		(PROG=$LOCAL; echo $line)
+		echo "Your output  : $myAns"
+		echo "Stan's Output: $stanAns"
+		echo "==========================="
+	fi
+done <$MYDIR
+
+echo "** Final Results **"
+echo "*   passed - $passed"
+echo "*   failed - $failed"
