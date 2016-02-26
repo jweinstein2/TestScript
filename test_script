@@ -3,7 +3,7 @@ ASSIGNMENT=3
 NAME="Subst16"
 LOCAL="./$NAME"
 STAN="/c/cs223/Hwk$ASSIGNMENT/$NAME"
-MYDIR="$(dirname "$(realpath "$0")")/tests"
+MYDIR="$(dirname "$(realpath "$0")")/tests$ASSIGNMENT"
 
 i=0
 failed=0
@@ -13,7 +13,7 @@ while read line
 do   
 	((i=i+1))
 	PROG=$LOCAL   
-    myAns=$(eval "$line")
+    myAns=$(eval "valgrind $line")
     PROG=$STAN  
     stanAns=$(eval "$line")
 
