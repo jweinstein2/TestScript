@@ -1,0 +1,9 @@
+#!/bin/bash
+myPath=$(eval "pwd")
+
+echo $myPath
+
+cd ~/bin/TestScript
+git fetch
+git pull
+cd $myPath
