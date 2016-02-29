@@ -1,2 +1,25 @@
-echo aabba | $PROG fu ba -q
-echo @..@ | $PROG @... .@ -r
+echo aabbab | $PROG ab ba -q
+echo aabbab | $PROG ab ba -g
+echo aabbab | $PROG ab ba -r
+echo aabbab | $PROG ab ba -
+echo aabbab | $PROG ab ba -rqg
+echo aaabbb | $PROG aa a -S2 abb aab -S0
+echo aaabbb | $PROG aa a -S1 abb aab -S2
+echo aaabbb | $PROG aa a -S1 abb aab -S1
+echo aaabbb | $PROG aa a -S0 abb aab -
+echo aaabbb | $PROG aa a -S0 abb aab -S1
+echo aaabbb | $PROG aa a -   abb aab -S0
+echo aaabbb | $PROG aa a -   abb aab -
+echo abbb | $PROG aa a -F2 abb aab -S1
+echo abbb | $PROG aa a -S2 abb aab -S0
+echo aabbbc | $PROG bd a -S2 aa a - abb aab -S1 c d -S
+echo aabbab | $PROG a. ba -g
+echo aabb | $PROG a. ba -r
+echo aabbab | $PROG a. ^c -g
+echo @@ | $PROG @. ^@@ -r
+echo '' | $PROG a b -r
+echo aabbcc | $PROG '' "" -q
+echo aabbcc | $PROG '' a -qS4
+echo aabb | $PROG
+echo aa@.a@@.bb@.@.bb.aaa | $PROG @. .@^ -r
+echo fuckyou | $PROG @. .@ -qrgrqg

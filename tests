@@ -21,6 +21,5 @@ echo '' | $PROG a b -r
 echo aabbcc | $PROG '' "" -q
 echo aabbcc | $PROG '' a -qS4
 echo aabb | $PROG
-echo aaaaaaaaaa | $PROG . '' -r
 echo aa@.a@@.bb@.@.bb.aaa | $PROG @. .@^ -r
 echo fuckyou | $PROG @. .@ -qrgrqg
