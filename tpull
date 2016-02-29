@@ -5,7 +5,7 @@ scriptPath=$(dirname $(readlink -f $0))
 echo $myPath
 echo $scriptPath
 
-cd ~/bin/TestScript
+cd $scriptPath
 git fetch
 git pull
 cd $myPath
