@@ -1,0 +1,12 @@
+#!/bin/bash
+myPath=$(eval "pwd")
+scriptPath=$(dirname $(readlink -f $0))
+message=$1
+
+echo " fucker $message"
+
+cd $scriptPath
+git add *
+git commit -m "$message"
+git push origin master
+cd $myPath
