@@ -36,7 +36,8 @@ then
 		if [[ "$var" = [0-9]* ]]
 		then
     		testsToPrint+="$var-"
-    	else
+    	elif [[ "$var" != "-"* ]]
+    	then
     		echo "invalid test number: $var"
     	fi
 	done
