@@ -1,6 +1,6 @@
 #!/bin/bash
-ASSIGNMENT=3
-NAME="Subst16"
+ASSIGNMENT=4
+NAME="Merge16"
 LOCAL="./$NAME"
 STAN="/c/cs223/Hwk$ASSIGNMENT/$NAME"
 MYDIR="$(dirname "$(realpath "$0")")/tests"
@@ -15,11 +15,11 @@ do
 	then
 		((i=i+1))
 		PROG=$LOCAL
-    	myAns=$(eval "valgrind -q $line")
-    	PROG=$STAN  
-    	stanAns=$(eval "$line")
+		myAns=$(eval "valgrind -q $line")
+		PROG=$STAN  
+		stanAns=$(eval "$line")
 
-    	if [ "$myAns" = "$stanAns" ]
+		if [ "$myAns" = "$stanAns" ]
 		then
 			((passed=passed+1))
 			echo "Test$i passed"
@@ -34,6 +34,6 @@ do
 	fi
 done <$MYDIR
 
-echo "** Final Results **"
-echo "*   passed - $passed"
-echo "*   failed - $failed"
+echo "==== Final Results ===="
+echo "       passed - $passed"
+echo "       failed - $failed"

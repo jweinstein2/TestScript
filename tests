@@ -1,3 +1,8 @@
 #TestCases for HW4
 #Dennis Duan and Jared Weinstein
 #test cases that fail gracefully *should not* be included!
+
+$PROG -4,5
+$PROG -4
+$PROG -4,
+$PROG --4,5
