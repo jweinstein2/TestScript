@@ -9,6 +9,15 @@ i=0
 failed=0
 passed=0
 
+if [[ "$1" = *"r"* ]]
+then
+	shouldPrintResults=1
+else
+	shouldPrintResults=0
+fi
+
+echo "===== testing ======="
+
 while read line           
 do
 	if [[ $line != "#"* ]]
@@ -25,11 +34,14 @@ do
 			echo "Test$i passed"
 		else
 			((failed=failed+1))
-			echo "===== Test$i failed ======="
-			(PROG=$LOCAL; echo $line)
-			echo "Your output  : $myAns"
-			echo "Stan's Output: $stanAns"
-			echo "==========================="
+			if [ $shouldPrintResults = 1 ]
+			then
+				echo "===== Test$i failed ======="
+				(PROG=$LOCAL; echo $line)
+				echo "Your output  : $myAns"
+				echo "Stan's Output: $stanAns"
+				echo "==========================="
+			fi
 		fi
 	fi
 done <$MYDIR
