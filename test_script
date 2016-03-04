@@ -9,15 +9,25 @@ i=0
 failed=0
 passed=0
 
-if [[ "$1" = *"r"* ]]
+##I eventually want to be able to specify specific test numbers as well
+if [[ "$1" = "-"*"r"* ]]
 then
 	shouldPrintResults=1
 else
 	shouldPrintResults=0
 fi
 
-echo "===== testing ======="
+if [[ "$1" = "-"*"t"* ]]
+then
+	shouldPrintTests=1
+else
+	shouldPrintTests=0
+fi
 
+echo "====== testing ========"
+
+
+## Test all the normal tests to see if output matches provided answer
 while read line           
 do
 	if [[ $line != "#"* ]]
@@ -31,21 +41,39 @@ do
 		if [ "$myAns" = "$stanAns" ]
 		then
 			((passed=passed+1))
-			echo "Test$i passed"
+			if [ $shouldPrintTests = 1 ]
+			then
+				echo "✓ | Test$i Passed : $line"
+			else
+				echo "✓ | Test$i Passed"
+			fi
 		else
 			((failed=failed+1))
+			echo "× | Test$i Failed : $line"
 			if [ $shouldPrintResults = 1 ]
 			then
-				echo "===== Test$i failed ======="
+				echo "=============== Failed test results =================="
 				(PROG=$LOCAL; echo $line)
 				echo "Your output  : $myAns"
 				echo "Stan's Output: $stanAns"
-				echo "==========================="
+				echo "======================================================"
 			fi
 		fi
 	fi
 done <$MYDIR
 
+## Test all the failed gracefully test cases
+#while read line
+#do
+#	if [[ $line != "#"* ]]
+#	then
+#		((i=i+1))
+#		#Check the local test for graceful failure
+#		PROG=$LOCAL
+#		myAns=$(eval "valgrind -q $line")
+#	fi
+#done  <$MYDIR
+
 echo "==== Final Results ===="
-echo "       passed - $passed"
-echo "       failed - $failed"
+echo "  passed - $passed"
+echo "  failed - $failed"

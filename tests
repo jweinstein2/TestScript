@@ -4,6 +4,9 @@
 #
 $PROG -4,5
 $PROG -4
-$PROG -4,
-$PROG --4,5
+#$PROG -4,
+#$PROG --4,5
 $PROG "/c/cs223/Hwk4/demo.c"
+$PROG "/c/cs223/Hwk4/demo.c" "/c/cs223/Hwk4/demo.c"
+$PROG "/c/cs223/Hwk4/demo.c" "/c/cs223/Hwk4/demo.c"
+$PROG -1234172,0 "/c/cs223/Hwk4/demo.c"
