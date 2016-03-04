@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# TestScript for Git supported collaborative testing
+# Code by Jared Weinstein & Dennis Duan
+
 ASSIGNMENT=4
 NAME="Merge16"
 LOCAL="./$NAME"
@@ -24,6 +28,22 @@ else
 	shouldPrintTests=0
 fi
 
+if [[ "$1" = "-"*"n"* ]]
+then
+	testsToPrint="-"
+	for var in "$@"
+	do
+		if [[ "$var" = [0-9]* ]]
+		then
+    		testsToPrint+="$var-"
+    	else
+    		echo "invalid test number: $var"
+    	fi
+	done
+else
+	testsToPrint="ALL"
+fi
+
 echo "====== testing ========"
 
 
@@ -33,30 +53,33 @@ do
 	if [[ $line != "#"* ]]
 	then
 		((i=i+1))
-		PROG=$LOCAL
-		myAns=$(eval "valgrind -q $line")
-		PROG=$STAN  
-		stanAns=$(eval "$line")
-
-		if [ "$myAns" = "$stanAns" ]
+		if [[ "$testsToPrint" == "ALL" ]] || [[ "$testsToPrint" = *"-$i-"* ]]
 		then
-			((passed=passed+1))
-			if [ $shouldPrintTests = 1 ]
+			PROG=$LOCAL
+			myAns=$(eval "valgrind -q $line")
+			PROG=$STAN  
+			stanAns=$(eval "$line")
+
+			if [ "$myAns" = "$stanAns" ]
 			then
-				echo "✓ | Test$i Passed : $line"
+				((passed=passed+1))
+				if [ $shouldPrintTests = 1 ]
+				then
+					echo "✓ | Test$i Passed : $line"
+				else
+					echo "✓ | Test$i Passed"
+				fi
 			else
-				echo "✓ | Test$i Passed"
-			fi
-		else
-			((failed=failed+1))
-			echo "× | Test$i Failed : $line"
-			if [ $shouldPrintResults = 1 ]
-			then
-				echo "=============== Failed test results =================="
-				(PROG=$LOCAL; echo $line)
-				echo "Your output  : $myAns"
-				echo "Stan's Output: $stanAns"
-				echo "======================================================"
+				((failed=failed+1))
+				echo "× | Test$i Failed : $line"
+				if [ $shouldPrintResults = 1 ]
+				then
+					echo "=============== Failed test results =================="
+					(PROG=$LOCAL; echo $line)
+					echo "Your output  : $myAns"
+					echo "Stan's Output: $stanAns"
+					echo "======================================================"
+				fi
 			fi
 		fi
 	fi
