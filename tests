@@ -1,6 +1,8 @@
-#TestCases for HW4
-#Dennis Duan and Jared Weinstein
-#test cases that fail gracefully *should not* be included!
+# TestCases for HW4
+# Dennis Duan and Jared Weinstein
+# test cases that fail gracefully *should not* be included!
+#
+#
 #
 $PROG -4,5
 $PROG -4
@@ -10,3 +12,5 @@ $PROG "/c/cs223/Hwk4/demo.c"
 $PROG "/c/cs223/Hwk4/demo.c" "/c/cs223/Hwk4/demo.c"
 $PROG "/c/cs223/Hwk4/demo.c" "/c/cs223/Hwk4/demo.c"
 $PROG -1234172,0 "/c/cs223/Hwk4/demo.c"
+$PROG -0,4 "/c/cs223/Hwk4/democ." "/c/cs223/queue.c"
+$PROG -1,3 "/home/accts/jtw37/cs223/hw4/z"
