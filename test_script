@@ -45,7 +45,7 @@ else
 	testsToPrint="ALL"
 fi
 
-echo "====== testing ========"
+echo "====== Testing ========"
 
 
 ## Test all the normal tests to see if output matches provided answer
