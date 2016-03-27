@@ -53,13 +53,17 @@ while read line
 do
 	if [[ $line != "#"* ]]
 	then
-		if [[ $line == "??"* ]]
+		if [[ $line == "??"* ]] ##Change this line to see if he has stderr
 		then
 			echo "fail gracefully"
 			## TODO : FAIL GRACEFULLY CHECK
+			## TODO : add a time function (perhaps do 1.5 times his program)
+			# SEE IF HIS PROGRAM HAS A STDERR OUTPUT
 			#No valgrind errors ... no infinite loop ... check stderr output? 
+			##check that they both print to stderr
 		else
-			##NORMAL CHECK FOR
+			## Normal check for test case
+			# Check and fail if the users program prints to stderr
 			((i=i+1))
 			if [[ "$testsToPrint" == "ALL" ]] || [[ "$testsToPrint" = *"-$i-"* ]]
 			then
