@@ -1,7 +1,13 @@
 #!/bin/bash
 myPath=$(eval "pwd")
 scriptPath=$(dirname $(readlink -f $0))
-message=$1
+
+if [ -z "$1"]
+	then
+		message="default commit message"
+	else
+		message=$1
+fi
 
 echo " fucker $message"
 
