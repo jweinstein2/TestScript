@@ -7,6 +7,6 @@ echo " fucker $message"
 
 cd $scriptPath
 git add *
-git commit -m "$message"
+git commit -m "fucker $message"
 git push origin master
 cd $myPath
