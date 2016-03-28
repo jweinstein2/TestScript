@@ -120,15 +120,12 @@ echo "  failed - $failed"
 
 END=$(date +%s%N)
 diff=$(( END-START ))
-echo "$diff"
 timer=$(bc <<< "scale=7; $diff/1000000000")
-echo "$timer"
 
 
 if [ $failed = 0 ]
 then
 	cd /home/accts/jtw37/leaderboard
 	who=$(whoami)
-	echo "$who"
-	/home/accts/jtw37/leaderboard/Add "$who" "$timer"
+	/home/accts/jtw37/leaderboard/Add "$who" "$timer" > /dev/null 2>&1
 fi
