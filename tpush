@@ -5,11 +5,12 @@ scriptPath=$(dirname $(readlink -f $0))
 if [ -z "$1"]
 	then
 		message="default commit message"
+		echo "fucker didn't change the $message"
 	else
 		message=$1
 fi
 
-echo "fucker didn't change the $message"
+
 
 cd $scriptPath
 git add *
