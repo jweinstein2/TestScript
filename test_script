@@ -119,11 +119,16 @@ echo "  passed - $passed"
 echo "  failed - $failed"
 
 END=$(date +%s%N)
-timer=$((END-START)) | awk '{print int($1/60)":"int($1%60)}'
+diff=$(( END-START ))
+echo "$diff"
+timer=$(bc <<< "scale=7; $diff/1000000000")
 echo "$timer"
+
 
 if [ $failed = 0 ]
 then
-	who=$(eval "whoami")
+	cd /home/accts/jtw37/leaderboard
+	who=$(whoami)
+	echo "$who"
 	/home/accts/jtw37/leaderboard/Add "$who" "$timer"
 fi
