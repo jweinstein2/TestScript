@@ -53,33 +53,46 @@ while read line
 do
 	if [[ $line != "#"* ]]
 	then
-		((i=i+1))
-		if [[ "$testsToPrint" == "ALL" ]] || [[ "$testsToPrint" = *"-$i-"* ]]
+		if [[ $line == "??"* ]] ##Change this line to see if he has stderr
 		then
-			PROG=$LOCAL
-			myAns=$(eval "valgrind -q $line")
-			PROG=$STAN  
-			stanAns=$(eval "$line")
-
-			if [ "$myAns" = "$stanAns" ]
+			echo "fail gracefully"
+			## TODO : FAIL GRACEFULLY CHECK
+			## TODO : add a time function (perhaps do 1.5 times his program)
+			# SEE IF HIS PROGRAM HAS A STDERR OUTPUT
+			#No valgrind errors ... no infinite loop ... check stderr output? 
+			##check that they both print to stderr
+		else
+			## Normal check for test case
+			# Check and fail if the users program prints to stderr
+			((i=i+1))
+			if [[ "$testsToPrint" == "ALL" ]] || [[ "$testsToPrint" = *"-$i-"* ]]
 			then
-				((passed=passed+1))
-				if [ $shouldPrintTests = 1 ]
+				PROG=$LOCAL
+				myAns=$(eval "valgrind -q $line > /dev/null 2>&1")
+				# > redirects the output of error log and program to bit bucket
+				PROG=$STAN  
+				stanAns=$(eval "$line > /dev/null 2>&1")
+
+				if [ "$myAns" = "$stanAns" ]
 				then
-					echo "✓ | Test$i Passed : $line"
+					((passed=passed+1))
+					if [ $shouldPrintTests = 1 ]
+					then
+						echo "✓ | Test$i: $line"
+					else
+						echo "✓ | Test$i"
+					fi
 				else
-					echo "✓ | Test$i Passed"
-				fi
-			else
-				((failed=failed+1))
-				echo "× | Test$i Failed : $line"
-				if [ $shouldPrintResults = 1 ]
-				then
-					echo "=============== Failed test results =================="
-					(PROG=$LOCAL; echo $line)
-					echo "Your output  : $myAns"
-					echo "Stan's Output: $stanAns"
-					echo "======================================================"
+					((failed=failed+1))
+					echo "× | Test$i Failed : $line"
+					if [ $shouldPrintResults = 1 ]
+					then
+						echo "=============== Failed test results =================="
+						(PROG=$LOCAL; echo $line)
+						echo "Your output  : $myAns"
+						echo "Stan's Output: $stanAns"
+						echo "======================================================"
+					fi
 				fi
 			fi
 		fi
