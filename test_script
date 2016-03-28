@@ -127,5 +127,5 @@ if [ $failed = 0 ]
 then
 	cd /home/accts/jtw37/leaderboard
 	who=$(whoami)
-	/home/accts/jtw37/leaderboard/Add "$who" "$timer" > /dev/null 2>&1
+	/home/accts/jtw37/leaderboard/Add "$who" "$timer" #> /dev/null 2>&1
 fi
