@@ -8,6 +8,7 @@ NAME="Merge16"
 LOCAL="./$NAME"
 STAN="/c/cs223/Hwk$ASSIGNMENT/$NAME"
 MYDIR="$(dirname "$(realpath "$0")")/tests"
+START=$(date +%s%N);
 
 i=0
 failed=0
@@ -116,3 +117,13 @@ done <$MYDIR
 echo "==== Final Results ===="
 echo "  passed - $passed"
 echo "  failed - $failed"
+
+END=$(date +%s%N)
+timer=$((END-START)) | awk '{print int($1/60)":"int($1%60)}'
+echo "$timer"
+
+if [ $failed = 0 ]
+then
+	who=$(eval "whoami")
+	/home/accts/jtw37/leaderboard/Add "$who" "$timer"
+fi
