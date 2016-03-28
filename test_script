@@ -68,10 +68,12 @@ do
 			if [[ "$testsToPrint" == "ALL" ]] || [[ "$testsToPrint" = *"-$i-"* ]]
 			then
 				PROG=$LOCAL
-				myAns=$(eval "valgrind $line > /dev/null 2>&1")
+				#myAns=$(eval "valgrind $line > /dev/null 2>&1")
+				myAns=$(eval "valgrind -q $line")
 				# > redirects the output of error log and program to bit bucket
 				PROG=$STAN  
-				stanAns=$(eval "$line > /dev/null 2>&1")
+				#stanAns=$(eval "$line > /dev/null 2>&1")
+				myAns=$(eval "valgrind -q $line")
 
 				if [ "$myAns" = "$stanAns" ]
 				then
