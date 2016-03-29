@@ -2,7 +2,7 @@
 myPath=$(eval "pwd")
 scriptPath=$(dirname $(readlink -f $0))
 
-if [ -z "$1"]
+if [ -z "$1" ]
 	then
 		message="default commit message"
 		echo "fucker didn't change the $message"
