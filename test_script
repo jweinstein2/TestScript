@@ -3,10 +3,10 @@
 # TestScript for Git supported collaborative testing
 # Code by Jared Weinstein & Dennis Duan
 
-ASSIGNMENT=4
-NAME="Merge16"
+ASSIGNMENT=2
+NAME="Parse"
 LOCAL="./$NAME"
-STAN="/c/cs223/Hwk$ASSIGNMENT/$NAME"
+STAN="/c/cs323/Hwk$ASSIGNMENT/$NAME"
 MYDIR="$(dirname "$(realpath "$0")")/tests"
 START=$(date +%s%N);
 
@@ -14,7 +14,16 @@ i=0
 failed=0
 passed=0
 
-##I eventually want to be able to specify specific test numbers as well
+##
+apply_shell_expansion() {
+    declare file="$1"
+    declare data=$(< "$PROG")
+    declare delimiter="__apply_shell_expansion_delimiter__"
+    declare command="cat <<$delimiter"$'\n'"$PROG"$'\n'"$delimiter"
+    eval "$command"
+}
+
+##Add flag to test for speed as well
 if [[ "$1" = "-"*"r"* ]]
 then
 	shouldPrintResults=1
@@ -54,15 +63,14 @@ while read line
 do
 	if [[ $line != "#"* ]]
 	then
-		if [[ $line == "??"* ]] ##Change this line to see if he has stderr
+		PROG=$STAN
+		#echo "TESTING"
+		#echo $(apply_shell_expansion $line)
+		#error="$(eval $(apply_shell_expansion $line) 2>&1 1>/dev/null)"
+		#echo $error
+		#echo "END TEST"
+		if [[ -z $error ]]
 		then
-			echo "fail gracefully"
-			## TODO : FAIL GRACEFULLY CHECK
-			## TODO : add a time function (perhaps do 1.5 times his program)
-			# SEE IF HIS PROGRAM HAS A STDERR OUTPUT
-			#No valgrind errors ... no infinite loop ... check stderr output? 
-			##check that they both print to stderr
-		else
 			## Normal check for test case
 			# Check and fail if the users program prints to stderr
 			((i=i+1))
@@ -98,21 +106,17 @@ do
 					fi
 				fi
 			fi
+		else
+			#Fail Graceful
+			echo "fail gracefully"
+			## TODO : FAIL GRACEFULLY CHECK
+			## TODO : add a time function (perhaps do 1.5 times his program)
+			# SEE IF HIS PROGRAM HAS A STDERR OUTPUT
 		fi
 	fi
 done <$MYDIR
 
-## Test all the failed gracefully test cases
-#while read line
-#do
-#	if [[ $line != "#"* ]]
-#	then
-#		((i=i+1))
-#		#Check the local test for graceful failure
-#		PROG=$LOCAL
-#		myAns=$(eval "valgrind -q $line")
-#	fi
-#done  <$MYDIR
+## FINAL DATA ## 
 
 echo "==== Final Results ===="
 echo "  passed - $passed"
@@ -122,10 +126,10 @@ END=$(date +%s%N)
 diff=$(( END-START ))
 timer=$(bc <<< "scale=7; $diff/1000000000")
 
-
-if [ $failed = 0 ]
-then
-	cd /home/accts/jtw37/leaderboard
-	who=$(whoami)
-	/home/accts/jtw37/leaderboard/Add "$who" "$timer" #> /dev/null 2>&1
-fi
+##
+#if [ $failed = 0 ]
+#then
+#	cd /home/accts/jtw37/leaderboard
+#	who=$(whoami)
+#	/home/accts/jtw37/leaderboard/Add "$who" "$timer" #> /dev/null 2>&1
+#fi

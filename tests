@@ -1,46 +1,50 @@
-# TestCases for HW4
-# Dennis Duan and Jared Weinstein
+# TestCases for HW6
+# Jared Weinstein
 # test cases that fail gracefully *should not* be included!
 #
 #
+# STAN'S TEST CASES
+echo '< A B | C | D | E > F' | $PROG
+echo 'A && B || C && D' | $PROG
+echo 'A ; B & C ; D || E' | $PROG
+echo 'A ;' | $PROG
+echo '(A ; B &) | (C || D) && E' | $PROG
 #
-$PROG -4,5
-$PROG -4
-$PROG -4,
-$PROG --4,5
-$PROG -,5
-$PROG -,
-$PROG -4a4,5
-$PROG -a4,5
-$PROG -4,5a5
-$PROG -4,a
-$PROG -a,a
-$PROG -4,,5
-$PROG -4-5
-$PROG -4,-5
-$PROG -1,3 "/c/cs223/Hwk4/asdfasdfasdf"
-$PROG -1,3 "/c/cs223/Hwk4/demo.c" "asdfoiawegjmaoisdvjaoiwertj"
-$PROG "/c/cs223/Hwk4/demo.c"
-$PROG "/c/cs223/Hwk4/demo.c" "/c/cs223/Hwk4/demo.c"
-$PROG "/c/cs223/Hwk4/demo.c" "/c/cs223/Hwk4/demo.c"
-$PROG -1234172,0 "/c/cs223/Hwk4/demo.c"
-$PROG -0,4 "/c/cs223/Hwk4/democ." "/c/cs223/queue.c"
-$PROG -1,3 "/home/accts/jtw37/cs223/hw4/z"
-$PROG -1234172,0 "/c/cs223/Hwk4/demo.c" "/c/cs223/Hwk4/protoQueue.c"
-$PROG -123123123 "/c/cs223/Hwk4/demo.c"
-$PROG -123123123,123123123 "/c/cs223/Hwk4/demo.c"
-$PROG -5,0 "/c/cs223/Hwk4/s16h4.v0"
-$PROG -0,100 "/c/cs223/Hwk4/s16h4.v0"
-$PROG -36 "/c/cs223/Hwk4/s16h4.v0"
-# these three should help test stability
-$PROG -1,3 "/c/cs223/Hwk4/protoQueue.c"
-$PROG -1,3 "/c/cs223/Hwk4/protoQueue.c" "/c/cs223/Hwk4/demo.c"
-$PROG -5,1 "/c/cs223/Hwk4/s16h4.v0"
-$PROG "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0" "/c/cs223/Hwk4/s16h4.v0"
-# invalid inputs from very eager poster
-$PROG 543,6 "/c/cs223/Hwk4/demo.c"
-$PROG ,543,6 "/c/cs223/Hwk4/demo.c"
-$PROG -543, "/c/cs223/Hwk4/demo.c"
-$PROG -543 "/c/cs223/Hwk4/demo.c"
-$PROG -,3 "/c/cs223/Hwk4/demo.c"
-$PROG - "/c/cs223/Hwk4/demo.c"
+# MY TEST CASES
+echo '' | $PROG
+echo 'hello world' | $PROG
+echo 'A B ;' | $PROG
+echo '; A B ;' | $PROG
+echo 'A=B C' | $PROG
+echo 'A=B' | $PROG
+echo 'A=B A=B C=D D' | $PROG
+echo 'A=' | $PROG
+echo '=A' | $PROG
+echo '1A=' | $PROG
+echo 'A |\ B' | $PROG
+echo '(A < fucker)'
+echo '(A <)'
+echo 'command >file1 >>file2' | $PROG
+echo '((A) B ;)' | $PROG
+echo '((A) (B) ;)' | $PROG
+echo '((a b) < c)' | $PROG
+echo '(a | (b c) > d) >> f' | $PROG
+echo '(< a (b c) | (d e) > f)' | $PROG
+echo '((< a (b c) | (d e) > f) | g) > h' | $PROG
+echo '< a ((< b (c d) | (e f) > g)) > i' | $PROG
+echo 'a | ((< b (c d) | (e f) > g))' | $PROG
+echo '<stdin &>stdout cmd arg' | $PROG
+echo '<stdin    cmd       &>stdout  arg' | $PROG
+echo '<stdin    cmd       arg       &>stdout' | $PROG
+echo '&>stdout  <stdin    cmd       arg' | $PROG
+echo 'cmd       <stdin    &>stdout  arg' | $PROG
+echo 'cmd       <stdin    arg       &>stdout' | $PROG
+echo '&>stdout  cmd       <stdin    arg' | $PROG
+echo 'cmd       &>stdout  <stdin    arg' | $PROG
+echo 'cmd       arg       <stdin    &>stdout' | $PROG
+echo '&>stdout  cmd       arg       <stdin' | $PROG
+echo 'cmd       &>stdout  arg       <stdin' | $PROG
+echo 'cmd       arg       &>stdout  <stdin' | $PROG
+echo '()' | $PROG
+echo '?=fucker' | $PROG
+echo '_=fucker' | $PROG
