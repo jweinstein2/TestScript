@@ -126,10 +126,12 @@ END=$(date +%s%N)
 diff=$(( END-START ))
 timer=$(bc <<< "scale=7; $diff/1000000000")
 
-##
-#if [ $failed = 0 ]
-#then
-#	cd /home/accts/jtw37/leaderboard
-#	who=$(whoami)
-#	/home/accts/jtw37/leaderboard/Add "$who" "$timer" #> /dev/null 2>&1
-#fi
+if [[ "$1" = "-"*"l"* ]]
+then
+	if [ $failed = 0 ]
+	then
+		cd /home/accts/jtw37/leaderboard
+		who=$(whoami)
+		/home/accts/jtw37/leaderboard/Add "$who" "$timer" #> /dev/null 2>&1
+	fi
+fi
