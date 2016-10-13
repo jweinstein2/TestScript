@@ -1,0 +1,32 @@
+# TestCases for HW4
+# Dennis Duan and Jared Weinstein
+# test cases that fail gracefully *should not* be included!
+#
+#
+#
+$PROG
+$PROG 1
+$PROG 1 2
+$PROG 1 2 3
+$PROG 1 2 3 4
+$PROG 1 2 3 4 5
+$PROG 1 2 3 4 5 6
+$PROG 1 1 10 a b
+$PROG 0 0 1 "" ""
+$PROG 2 2 "" abcd dcba
+$PROG 2 2 -10 abcd dcba
+$PROG 2 2 12.0 abcd dcba
+$PROG 2 2 0 abcd dcba
+$PROG 17 17 1000 asdf asdf
+$PROG 3 3 20 asdfasdfa aaassddff
+$PROG 2 3 20 asdfas sdfasa
+$PROG 3 4 20 asdfasdfasdf fdsafdsaasdf
+$PROG 1 abcdefghi ighedfbac
+$PROG 2 abcdefghi ighedfbac
+$PROG 3 abcdefghi ighedfbac
+$PROG 4 abcdefghi ighedfbac
+$PROG 4 3 9 abcdefghijkl hailbedcfgjk
+$PROG 4 3 10 abcdefghijkl hailbedcfgjk
+$PROG 3 5 9 abcdefghijklmno omnljkigfhedcab
+$PROG 2 2 5 "	abc" "bcad"
+$PROG 2 2 5 "abcd" "bca	"
